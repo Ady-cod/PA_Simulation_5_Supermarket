@@ -1,0 +1,52 @@
+@startuml
+class Supermarket{
+-products:List<Product>
++displayCurrentStock():void
+-selectAvailableProductsInStock():List<Product>
+}
+abstract class Product{
+-id:UUID
+-brandName:String
+-quantity:int
+}
+abstract class Milk extends Product{
+-expirationDate:DateService
+}
+class LongLastingMilk extends Milk{
+}
+class RegularMilk extends Milk{
+}
+class Shovel extends Product{
+-shovelSize:ShovelSize
+-shovelMaterial:ShovelMaterial
+}
+class Truck extends Product{
+-wheelsNumber:int
+}
+interface DateService{
+getDateValuesArray():int[]
+}
+class SimpleDate implements DateService{
+-day:int
+-month:int
+}
+class FullDate implements DateService{
+-day:int
+-month:int
+-year:int
+}
+enum ShovelSize{
+SMALL,
+NORMAL,
+BIG_SIZE
+}
+enum ShovelMaterial{
+ALUMINIUM,
+STEEL,
+PLASTIC
+}
+Supermarket-->Product
+Milk-->DateService
+Shovel-->ShovelMaterial
+Shovel-->ShovelSize
+@enduml
